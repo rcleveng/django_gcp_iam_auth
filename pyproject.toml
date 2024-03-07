@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django_gcp_iam_auth"
+version = "0.0.3"
+authors = [
+  { name="Rob Clevenger", email="rob+django_gcp_iam_auth@robsite.org" },
+]
+description = "Allow Django's database wrappers to work with Google Cloud SQL's IAM Auth"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "django>4.0",
+  "google-auth",
+  "requests"
+]
+
+[project.urls]
+Homepage = "https://github.com/rcleveng/django_gcp_iam_auth"
+Issues = "https://github.com/rcleveng/django_gcp_iam_auth/issues"
