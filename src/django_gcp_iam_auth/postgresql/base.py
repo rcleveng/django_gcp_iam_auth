@@ -1,4 +1,5 @@
 import copy
+from typing import Any, Dict
 from django.db.backends.postgresql import base
 
 try:
@@ -13,8 +14,8 @@ except google.auth.exceptions.DefaultCredentialsError:
 CLOUDSQL_IAM_LOGIN_SCOPE = ["https://www.googleapis.com/auth/sqlservice.login"]
 
 class DatabaseWrapper(base.DatabaseWrapper):
-    def get_connection_params(self):
-        params = super().get_connection_params()
+    def get_connection_params(self) -> Dict[str, Any]:
+        params : Dict[str, Any] = super().get_connection_params()
         # need to remove this otherwise we'll get errors like
         #   'invalid dsn: invalid connection option "gcp_iam_auth"'
         if params.pop("gcp_iam_auth", None):

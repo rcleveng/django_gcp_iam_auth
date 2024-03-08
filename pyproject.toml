@@ -25,3 +25,16 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/rcleveng/django_gcp_iam_auth"
 Issues = "https://github.com/rcleveng/django_gcp_iam_auth/issues"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+pythonpath = "src"
+addopts = [
+    "--import-mode=importlib",
+    "-ra",
+    "-q"
+]
+testpaths = [
+    "tests",
+    "integration",
+]
