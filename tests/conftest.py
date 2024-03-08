@@ -1,7 +1,7 @@
 from django.conf import settings
 
-DATABASES = { 
-    "default" : {
+DATABASES = {
+    "default": {
         "ENGINE": "django_gcp_iam_auth.postgresql.postgresql",
         "HOST": "mydbhost",
         "NAME": "mySAusername@iam",
@@ -11,6 +11,7 @@ DATABASES = {
         "USER": "some-iam-user",
     },
 }
+
 
 def pytest_configure():
     settings.configure(

@@ -3,17 +3,12 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from unittest import mock
 from unittest.mock import patch
-from typing import Dict
 
-from django.test import override_settings
-import django_gcp_iam_auth.postgresql.base
 from django_gcp_iam_auth.postgresql.base import DatabaseWrapper
-from django.conf import settings
-from google.auth.transport import requests
-from google.auth.credentials import Credentials, Scoped, TokenState
+from google.auth.credentials import Credentials
 
-TEST_DATABASES = { 
-    "default" : {
+TEST_DATABASES = {
+    "default": {
         "ENGINE": "django_gcp_iam_auth.postgresql.postgresql",
         "HOST": "mydbhost",
         "NAME": "mySAusername@iam",
@@ -24,8 +19,9 @@ TEST_DATABASES = {
     },
 }
 
+
 class FakeCredentials(Credentials):
-    refreshed : bool = False
+    refreshed: bool = False
 
     def __init__(self, token):
         self.token = token
@@ -40,14 +36,16 @@ def now():
     now = now.replace(tzinfo=None)
     return now
 
+
 def expired_timestamp():
     now = datetime.now(timezone.utc)
     now = now.replace(tzinfo=None)
     return now - timedelta(days=1)
 
+
 class TestBasics(unittest.TestCase):
-    _creds : FakeCredentials
-    _wrapper : DatabaseWrapper
+    _creds: FakeCredentials
+    _wrapper: DatabaseWrapper
 
     def setUp(self):
         self._creds = self._make_credentials()
@@ -80,8 +78,9 @@ class TestBasics(unittest.TestCase):
         db['OPTIONS'].pop('gcp_iam_auth')
         dbw = DatabaseWrapper(db)
 
-        params = dbw.get_connection_params()
+        dbw.get_connection_params()
         mock_auth.assert_not_called()
+
 
 if __name__ == '__main__':
     unittest.main()
