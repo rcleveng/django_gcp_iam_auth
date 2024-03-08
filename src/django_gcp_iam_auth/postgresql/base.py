@@ -1,11 +1,12 @@
 from typing import Any, Dict
+
 from django.db.backends.postgresql import base
 
 try:
     import google.auth
     import google.auth.exceptions
-    from google.auth.transport import requests
     from google.auth.credentials import TokenState
+    from google.auth.transport import requests
 
 except google.auth.exceptions.DefaultCredentialsError:
     pass
@@ -20,8 +21,7 @@ class DatabaseWrapper(base.DatabaseWrapper):
         # need to remove this otherwise we'll get errors like
         #   'invalid dsn: invalid connection option "gcp_iam_auth"'
         if params.pop("gcp_iam_auth", None):
-            self._credentials, _ = google.auth.default(
-                scopes=CLOUDSQL_IAM_LOGIN_SCOPE)
+            self._credentials, _ = google.auth.default(scopes=CLOUDSQL_IAM_LOGIN_SCOPE)
             if not self._credentials.token_state == TokenState.FRESH:
                 self._credentials.refresh(requests.Request())
             params.setdefault("port", 5432)

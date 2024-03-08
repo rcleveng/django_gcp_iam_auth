@@ -1,7 +1,8 @@
+black
+django
 django>4.0
 google-auth
+isort
 psycopg
-requests
 pytest-django
-django
-psycopg
+requests

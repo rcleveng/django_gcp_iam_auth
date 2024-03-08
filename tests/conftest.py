@@ -18,4 +18,4 @@ def pytest_configure():
         DEBUG=True,
         USE_TZ=False,
         DATABASES=DATABASES.copy(),
-        )
+    )
