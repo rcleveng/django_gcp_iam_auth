@@ -2,3 +2,6 @@ django>4.0
 google-auth
 psycopg
 requests
+pytest-django
+django
+psycopg
