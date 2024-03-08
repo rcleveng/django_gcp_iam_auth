@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "django_gcp_iam_auth"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Rob Clevenger", email="rob+django_gcp_iam_auth@robsite.org" },
 ]

@@ -1,4 +1,5 @@
 black
+build
 django
 django>4.0
 google-auth
@@ -6,3 +7,4 @@ isort
 psycopg
 pytest-django
 requests
+twine
