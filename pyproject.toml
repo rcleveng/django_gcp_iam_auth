@@ -38,3 +38,18 @@ testpaths = [
     "tests",
     "integration",
 ]
+
+[tool.isort]
+py_version = 311
+filter_files = true
+profile = 'black'
+line_length = 120
+
+[tool.black]
+line-length = 120
+target-version = ['py312']
+exclude = '''
+(
+  | migrations
+)
+'''
