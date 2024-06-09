@@ -12,8 +12,13 @@ pip install django_gcp_iam_auth
 
 ## Usage
 
-Update the DATABASES entry to replace the ENGINE for your connection.
+1. Update the DATABASES entry to replace the ENGINE for your connection
+1. Set ```gcp_iam_auth``` to ```True``` in
+the ```OPTIONS``` for that connection.
+
+### Example:
 
 ```
 DATABASES["default"]["ENGINE"]  = "django_gcp_iam_auth.postgresql"
+DATABASES["default"]["OPTIONS"]["gcp_iam_auth"] = True
 ```
